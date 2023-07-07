@@ -2,7 +2,7 @@ const mongoose =require('mongoose')
 exports.connectDb=async ()=>
 {
     try{
-        const conn=await mongoose.connect('mongodb://localhost:27017/flight');
+        const conn=await mongoose.connect('mongodb://0.0.0.0/flight');
         console.log('db is connected');
     }
     catch(error)

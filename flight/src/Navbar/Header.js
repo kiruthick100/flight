@@ -52,12 +52,12 @@ const Header=()=>
           <Link to="/" >Home</Link>
         <Link to="/AvailableFlight">Flight</Link>
         {
-           data!="No" && <Link to="/BookingList">Booked</Link>
+           data=="Yes" && <Link to="/BookingList">Booked</Link>
         }
        
         <Link to ="/History">History</Link>
        {
-        data!="No" && <Link to="AddFlight">AddFlight</Link>
+        data=="Yes" && <Link to="AddFlight">AddFlight</Link>
        } 
        {/* {
         Fixed.length>0 &&<button onClick={Logout1}>Logout</button>

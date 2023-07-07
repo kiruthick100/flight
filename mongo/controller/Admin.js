@@ -47,7 +47,7 @@ exports.deleteFlight=async(req,res)=>
     try{
         const afterdelete= await Flight.findByIdAndDelete(req.params.id);      
           console.log(afterdelete)
-        return res.send("hello")
+        return res.send("hel")
     }
     catch(error){
         return res.status(500).json(

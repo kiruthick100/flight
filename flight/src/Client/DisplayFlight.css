@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.FlightContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.FlightListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.FlightList {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transform: scale(0);
+  opacity: 0;
+  animation: flightListAnimation 0.5s ease-in-out forwards;
+}
+
+@keyframes flightListAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.FlightImage {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.FlightInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.FlightInfoHeader {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  animation: textAnimation 0.5s ease-in-out;
+}
+
+@keyframes textAnimation {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.FlightInfoItem {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 5px;
+  animation: textAnimation 0.5s ease-in-out;
+}
+
+@keyframes textAnimation {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

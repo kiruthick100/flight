@@ -12,6 +12,7 @@ import Register from "../Client/Login/Register";
 import Login from "../Client/Login/Login"
 import Logout from "../Client/Login/Logout";
 import History from "../Client/Histroy";
+import Error from "./Error";
 import "./Header.css"
 const Header=()=>
 {
@@ -28,7 +29,6 @@ const Header=()=>
   const AfterLogout=()=>
   {
     SetFixed([])
-    // const data =localStorage.getItem("LoginId")
      var SetLogin=0;
       const temp=[data];
       SetFixed(temp);
@@ -57,17 +57,8 @@ const Header=()=>
        
         <Link to ="/History">History</Link>
        {
-        data!="Yes" && <Link to="AddFlight">AddFlight</Link>
-       } 
-       {/* {
-        Fixed.length>0 &&<button onClick={Logout1}>Logout</button>
+        data=="Yes" && <Link to="AddFlight">AddFlight</Link>
        }
-        {
-        Fixed.length<=0 &&<button onClick={Logout1}>Login</button>
-       }
-        <a class="" target="_self" aria-current="false" href="https://www.bing.com/travel/flights?src=&q=flights+from+-&form=FBSCOP&entrypoint=FBSCOP" h="ID=SERP,5038.1">Flight References</a> */}
-
-       
           </navbar>
 
           <Routes>
@@ -77,7 +68,11 @@ const Header=()=>
             <Route  exact path="/" element={<DisplayUserData/>}></Route>
             
             <Route  path="/DisplayFlight" element={<DisplayFlight/>}></Route>
-            <Route  path="/AddFlight" element={<AddFlight/>}></Route>
+            {
+        data=="Yes" ? <Route  path="/AddFlight" element={<AddFlight/>}></Route>:
+        <Route  path="/AddFlight" element={<Error/>}></Route>
+       }
+            
             <Route  path="/DetailView" element={<DetailView/>}></Route>
             <Route path="/Payment" element={<Payment/>}></Route>
             <Route path="/DetailView" element={   <DetailView/>}></Route>

@@ -1,6 +1,6 @@
 const express=require('express');
 const bodyparser=require('body-parser');
-const{AddFlight,update,AddedFlight,deleteFlight}=require('./controller/Admin')
+const{AddFlight,update,AddedFlight,deleteFlight, updateClass}=require('./controller/Admin')
 const{Register,Login1}=require('./controller/Login')
 const {AddState,GetState}=require('./controller/State')
 // const { AddDistric } =require( './controller/Distric');
@@ -19,6 +19,7 @@ app.delete('/api/deleteFlight/:id',deleteFlight);
 app.get('/api/DisplayFlight/:From/:To/:Date',DisplayDetails);
 app.put('/api/DisplayFlight',UpdateAvailableSeat)
 app.put('/api/update/:id/:list',update)
+app.put('/api/updateclass/:id/:list',updateClass)
 app.post('/api/bookinglist',Booking)
 app.get('/api/AvailableFlight/:State',AvailableFlight);
 app.get('/api/BookingDetails',BookedDetails)

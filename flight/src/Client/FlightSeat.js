@@ -40,7 +40,7 @@ const FlightSeat=(prop)=>
  console.log(temp)
   function PasangerDetails()
     {
-        navigator("/PasangerDetails",{state:{value:{"id":temp,"list":SaveChangedSeat1}}})
+        navigator("/PasangerDetails",{state:{value:{"id":temp,"list":SaveChangedSeat1,"class":"Secondaray"}}})
     }
     return(
       

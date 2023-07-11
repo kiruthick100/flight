@@ -7,7 +7,8 @@ const DisplayFlight = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
-
+console.log("vcbf",location.state.class);
+const class1=location.state.class
   useEffect(() => {
     const delay = setTimeout(() => {
       setIsLoading(false);
@@ -17,7 +18,8 @@ const DisplayFlight = () => {
   }, []);
 
   const viewDetail = (value) => {
-    navigate("/DetailView", { state: { value } });
+    navigate("/DetailView", { state: {value: value ,class:class1} });
+                              
   }
 
   return (

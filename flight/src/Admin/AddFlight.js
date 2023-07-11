@@ -15,6 +15,7 @@ const AddFlight = () => {
     Date: '',
     Time: '',
     SeatAvailable: ["1,23,45"],
+    BusinessClass:['1,2,4'],
     AdminId: LoginId,
     Amount: 0
   });

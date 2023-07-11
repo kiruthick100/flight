@@ -13,7 +13,9 @@ const DisplayUserData = () => {
     From: '',
     To: '',
     Date: '',
+    class:''
   });
+  const createclass=["Business","secondary"];
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,7 +26,7 @@ const DisplayUserData = () => {
 
     try {
       const response = await axios.get(`http://localhost:3000/api/DisplayFlight/${formData.From}/${formData.To}/${formData.Date}`);
-      navigator("/DisplayFlight", { state: { value: response.data } });
+      navigator("/DisplayFlight", { state: { value: response.data ,class:formData.class}});
     } catch (error) {
       console.error(error);
     }
@@ -124,6 +126,20 @@ useEffect(() => {
                   ))}
                 </select>
         </div>
+        <select
+                  name="class"
+                  value={formData.class}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select a state</option>
+                  {createclass.map((state, index) => (
+                    <option key={index} value={state
+                    }>
+                      {state}
+                    </option>
+                  ))}
+                </select>
         <div className="field">
           <label htmlFor="dateInput">Date</label>
           <input

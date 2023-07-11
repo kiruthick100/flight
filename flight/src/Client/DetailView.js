@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom";
 // import PasangerDetails from "./PasangerDetails";
 import FlightSeat from './FlightSeat';
 // import "./DetailView.css";
+import Business from"./Business"
 import { useState } from "react";
 const DetailView=()=>
 {
     const[pasangerCount,setpasangerCount]=useState(0);
     const location=useLocation();
+    console.log("dbdfbd",location.state.class);
     const navigator=useNavigate();
     console.log(location)
     function Check(e){
@@ -36,7 +38,12 @@ const DetailView=()=>
        <h1> {location.state.value.Time}</h1>
      
       
-       <FlightSeat value={location.state.value}/>
+       {
+        location.state.class!="Business" &&<FlightSeat value={location.state.value}/>
+       }
+       {
+        location.state.class=="Business" &&<Business value={location.state.value}/>
+       }
       
         </center>
         </div>

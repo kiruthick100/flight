@@ -69,7 +69,29 @@ exports.update=async(req,res)=>
         if(UpdateFlight)
         {
             
-            var temp={name:UpdateFlight.name,From:UpdateFlight.From,To:UpdateFlight.To,Date:UpdateFlight.Date,Time:UpdateFlight.Time,SeatAvailable:req.params.list,Amount:UpdateFlight.Amount}
+            var temp={name:UpdateFlight.name,From:UpdateFlight.From,To:UpdateFlight.To,Date:UpdateFlight.Date,Time:UpdateFlight.Time,SeatAvailable:req.params.list, BusinessClass:UpdateFlight.BusinessClass,Amount:UpdateFlight.Amount}
+           const updated= await Flight.findByIdAndUpdate(req.params.id,temp)
+           res.send(updated);
+            //  res.send("hello")
+        }
+    }
+    catch(error){
+        return res.status(500).json(
+            {
+                
+            }
+        )
+    }
+}
+exports.updateClass=async(req,res)=>
+{
+    try{
+        console.log(req.params.id)
+        const UpdateFlight=await Flight.findById(req.params.id)
+        if(UpdateFlight)
+        {
+            
+            var temp={name:UpdateFlight.name,From:UpdateFlight.From,To:UpdateFlight.To,Date:UpdateFlight.Date,Time:UpdateFlight.Time,SeatAvailable:UpdateFlight.SeatAvailable, BusinessClass:req.params.list,Amount:UpdateFlight.Amount}
            const updated= await Flight.findByIdAndUpdate(req.params.id,temp)
            res.send(updated);
             //  res.send("hello")

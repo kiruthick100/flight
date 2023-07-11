@@ -9,6 +9,7 @@ const AddFlight1=new mongoose.Schema(
         Date:String,
         Time:String,
         SeatAvailable:[],
+        BusinessClass:[],
         Amount:Number,
         AdminId:String
         

@@ -44,9 +44,17 @@ const PasangerDetails=()=>
       }
         try {
 
-            
-            const response = await axios.put(`http://localhost:3000/api/update/${location.state.value.id}/${location.state.value.list}`);
+            if(location.state.value.class=="Business")
+            {
+              const response = await axios.put(`http://localhost:3000/api/updateclass/${location.state.value.id}/${location.state.value.list}`);
             console.log(response.data); 
+            }
+            else
+            {
+              const response = await axios.put(`http://localhost:3000/api/update/${location.state.value.id}/${location.state.value.list}`);
+            console.log(response.data); 
+            }
+            
           } catch (error) {
             console.error(error); 
             

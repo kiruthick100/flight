@@ -5,6 +5,9 @@ import "./DisplayUserData.css";
 
 const DisplayUserData = () => {
   const navigator = useNavigate();
+  const [Sate1, SetState] = useState([]);
+  const [Distric1, SetDistric] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); 
 
   const [formData, setFormData] = useState({
     From: '',
@@ -34,7 +37,7 @@ useEffect(()=>
       const data = await response.json();
       const state = data.region;
       console.log(`State: ${state}`);
-      // You can perform further actions with the state information here
+    
     } catch (error) {
       console.error('Error occurred while retrieving location:', error);
     }
@@ -43,14 +46,36 @@ useEffect(()=>
   getStateByIP();
   
 },[])
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const stateResponse = await axios.get('http://localhost:3000/api/GetState');
+      console.log(stateResponse.data);
+      SetState(stateResponse.data);
+
+      const districtResponse = await axios.get('http://localhost:3000/api/GetDistrict');
+      console.log(districtResponse.data);
+      SetDistric(districtResponse.data);
+
+      setIsLoading(false); // Set loading state to false after fetching data
+    } 
+   
+    catch (error) {
+      console.error(error);
+    }
+  }
+
+  fetchData();
+}, []);
+
   return (
-    <div className="container">
-      <div className="flight">
-        <div className="airplane"></div>
+    <div className="containe">
+      <div className="fligh">
+        <div className="airplan"></div>
       </div>
       <form className="form" onSubmit={handleSubmit}>
         <div className="field">
-          <label htmlFor="fromInput">From</label>
+          {/* <label htmlFor="fromInput">From</label>
           <input
             type="text"
             id="fromInput"
@@ -58,18 +83,46 @@ useEffect(()=>
             value={formData.From}
             onChange={handleChange}
             required
-          />
+          /> */}
+              <select
+                  name="From"
+                  value={formData.From}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select a state</option>
+                  {Distric1.map((state, index) => (
+                    <option key={index} value={state.Distric
+                    }>
+                      {state.Distric}
+                    </option>
+                  ))}
+                </select>
         </div>
         <div className="field">
           <label htmlFor="toInput">To</label>
-          <input
+          {/* <input
             type="text"
             id="toInput"
             name="To"
             value={formData.To}
             onChange={handleChange}
             required
-          />
+          /> */}
+            <select
+                  name="To"
+                  value={formData.To}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select a state</option>
+                  {Distric1.map((state, index) => (
+                    <option key={index} value={state.Distric
+                    }>
+                      {state.Distric}
+                    </option>
+                  ))}
+                </select>
         </div>
         <div className="field">
           <label htmlFor="dateInput">Date</label>

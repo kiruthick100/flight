@@ -30,7 +30,7 @@ app.post('/api/AddState',AddState);
 app.get('/api/GetState',GetState)
 // Distric
 app.post('/api/AddDistric',AddDistric);
-app.get('/api/GetDistric',GetDistrci)
+app.get('/api/GetDistrict',GetDistrci)
 
 app.listen(3000,()=>
 {

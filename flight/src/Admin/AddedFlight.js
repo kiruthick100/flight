@@ -34,7 +34,7 @@ const AddedFlight=()=>
         <>
         { Added.map((value, index) => (
           <div className="FlightList" key={value._id} >
-            {/* <img src={FlightImage} alt="Flight" className="FlightImage" /> */}
+          
             <div className="FlightInfo">
               <div className="FlightInfoHeader">{value.To}</div>
               <div className="FlightInfoItem">{value.From}</div>

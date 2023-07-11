@@ -31,7 +31,7 @@ const BookingList = () => {
         </div>
       ) : (
         <>
-          {booking>0 ?booking.map((value, index) => (
+          {booking.map((value, index) => (
             <div className="booking-item" key={index}>
               <div className="booking-info">
                 <div className="booking-info-header">{value.Name}</div>
@@ -40,7 +40,7 @@ const BookingList = () => {
                 <div className="booking-info-item">{value.Adharcard}</div>
               </div>
             </div>
-          )):"Oops no data contains"}
+          ))}
         </>
       )}
     </div>

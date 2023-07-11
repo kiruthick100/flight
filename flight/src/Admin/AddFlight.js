@@ -1,12 +1,15 @@
 import axios from 'axios';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddedFlight from './AddedFlight';
+import AddState from './AddState';
 
 const AddFlight = () => {
   const LoginId=localStorage.getItem("LoginId")
-  
+  const [Sate1,SetState]=useState([]);
+  const[Distric1,SetDistric]=useState([]);
     const [formData, setFormData] = useState({
       name: '',
+      State:'',
       From: '',
       To:'',
       Date:'',
@@ -19,7 +22,35 @@ const AddFlight = () => {
     const handleChange = (e) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     };
-  
+  useEffect(()=>
+  {
+    const GetState=async()=>
+    {
+
+    
+    try {
+      const response = await axios.get('http://localhost:3000/api/GetState');
+      console.log(response.data); 
+      SetState(response.data);
+    } catch (error) {
+      console.error(error); 
+    }
+  }
+  GetState();
+  const GetDistric=async()=>
+    {
+
+    
+    try {
+      const response = await axios.get('http://localhost:3000/api/GetDistric');
+      console.log(response.data);
+      SetDistric(response.data); 
+    } catch (error) {
+      console.error(error); 
+    }
+  }
+  GetDistric();
+  },[])
     const handleSubmit = async(e) => {
       e.preventDefault();
       
@@ -38,6 +69,7 @@ const AddFlight = () => {
       Date:'',
       Time:'',
       SeatAvailable:[],
+      AdminId:LoginId,
       Amount:''
       });
     };
@@ -129,6 +161,7 @@ const AddFlight = () => {
       </div>
    <div>
     <AddedFlight />
+    
    </div>
       </>
     );

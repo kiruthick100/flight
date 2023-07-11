@@ -29,8 +29,8 @@ const Login = () => {
             localStorage.setItem('LoginId', response.data._id);
             localStorage.setItem('LoginEmail', response.data.Email);
             localStorage.setItem('LoginAdmin', response.data.Admin);
-
-            navigation("/")
+            window.location.reload();
+            // navigation("/")
 
         }
         

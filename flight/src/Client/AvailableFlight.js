@@ -1,13 +1,7 @@
 import axios from "axios";
-import React, { useEffect, useState ,CSSProperties} from "react";
+import React, { useEffect, useState } from "react";
 import FlightImage from "../Image/Flight.jpeg";
-import ClipLoader from "react-spinners/ClipLoader";
-
-const override: CSSProperties = {
-  display: "block",
-  margin: "0 auto",
-  borderColor: "blue",
-};
+import "./AvailableFlight.css";
 const AvailableFlight = () => {
   const [state, setState] = useState();
   const [availableFlights, setAvailableFlights] = useState([]);
@@ -35,20 +29,14 @@ const AvailableFlight = () => {
   }, []);
 
   const viewDetail = (value) => {
-    // Implement the logic to view flight details here
   };
 
   return (
     <div className="container">
       {isLoading ? (
-        <ClipLoader
-        color={"blue"}
-        loading={isLoading}
-        cssOverride={override}
-        size={300}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-      />
+        <div className="loading-overlay">
+          <div className="loading-spinner"></div>
+        </div>
       ) : (
         availableFlights.length > 0 &&
         availableFlights.map((value, index) => (

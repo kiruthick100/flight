@@ -14,10 +14,14 @@ import Logout from "../Client/Login/Logout";
 import History from "../Client/Histroy";
 import Error from "./Error";
 import "./Header.css"
+import AddState from "../Admin/AddState";
+import AddDistric from "../Admin/AddDistric";
 const Header=()=>
 {
   const [Fixed,SetFixed]=useState([]);
+  const [check,setCheck]=useState(true);
   const data =localStorage.getItem("LoginAdmin")
+  console.log(data);
   useEffect(()=>
   {
     
@@ -38,7 +42,9 @@ const Header=()=>
   const Logout1=()=>
     {
         localStorage.clear();
+        setCheck(false);
         AfterLogout();
+        window.location.reload();
 
 
     }
@@ -50,26 +56,33 @@ const Header=()=>
       <navbar className="header">
         
           <Link to="/" >Home</Link>
+        
         <Link to="/AvailableFlight">Flight</Link>
         {
-           data=="Yes" && <Link to="/BookingList">Booked</Link>
+           data=="yes" && <Link to="/BookingList">Booked</Link>
         }
        
         <Link to ="/History">History</Link>
        {
-        data=="Yes" && <Link to="AddFlight">AddFlight</Link>
+        data=="yes" && <Link to="/AddFlight">AddFlight</Link>
        }
+       
+       {data==null ? <Link to="/Login">Login</Link>:
+       <button onClick={Logout1}>Logout</button>
+      }
           </navbar>
-
+         
           <Routes>
           
 
-          <Route     path="/Login" element={<Login/>}></Route>
+         
             <Route  exact path="/" element={<DisplayUserData/>}></Route>
-            
+            <Route     path="/Login" element={<Login/>}></Route>
             <Route  path="/DisplayFlight" element={<DisplayFlight/>}></Route>
+            <Route path="/AddState" element={<AddState/>}></Route>
+            <Route path="/AddDistric" element={<AddDistric/>}></Route>
             {
-        data=="Yes" ? <Route  path="/AddFlight" element={<AddFlight/>}></Route>:
+        data=="yes" ? <Route  path="/AddFlight" element={<AddFlight/>}></Route>:
         <Route  path="/AddFlight" element={<Error/>}></Route>
        }
             

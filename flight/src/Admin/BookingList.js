@@ -1,36 +1,50 @@
+
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-const BookingList=()=>
-{
-    const [Booking,SetBooking]=useState([]);
-    useEffect(()=>
-    {
-        const BookingList1=async()=>
-        {
+import './BookingList.css';
 
-        
-        const response=await axios.get("http://localhost:3000/api/BookingDetails")
-        SetBooking(response.data);
-        console.log(response.data)
-        }
-        BookingList1()
-    },[])
-    return(
+const BookingList = () => {
+  const [booking, setBooking] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBookingList = async () => {
+      try {
+        setIsLoading(true); 
+        const response = await axios.get("http://localhost:3000/api/BookingDetails");
+        setBooking(response.data);
+        setIsLoading(false); 
+      } catch (error) {
+        console.error("Error occurred while fetching booking details:", error);
+        setIsLoading(false); 
+      }
+    };
+
+    fetchBookingList();
+  }, []);
+
+  return (
+    <div className="booking-container">
+      {isLoading ? (
+        <div className="loading-overlay">
+          <div className="loading-spinner"></div>
+        </div>
+      ) : (
         <>
-         { Booking.map((value, index) => (
-          
-          <div>
-            
-            <div className="FlightInfo">
-              <div className="FlightInfoHeader">{value.Name}</div>
-              <div className="FlightInfoItem">{value.Age}</div>
-              <div className="FlightInfoItem">{value.Address}</div>
-             
-              <div className="FlightInfoItem">{value.Adharcard}</div>
+          {booking>0 ?booking.map((value, index) => (
+            <div className="booking-item" key={index}>
+              <div className="booking-info">
+                <div className="booking-info-header">{value.Name}</div>
+                <div className="booking-info-item">{value.Age}</div>
+                <div className="booking-info-item">{value.Address}</div>
+                <div className="booking-info-item">{value.Adharcard}</div>
+              </div>
             </div>
-            </div>          
-        ))}
+          )):"Oops no data contains"}
         </>
-    )
-}
-export default BookingList
+      )}
+    </div>
+  );
+};
+
+export default BookingList;

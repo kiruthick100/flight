@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import "./DisplayUserData.css";
-
+import Flight2 from "../Image/flight2.jpg"
 const DisplayUserData = () => {
   const navigator = useNavigate();
   const [Sate1, SetState] = useState([]);
@@ -71,10 +71,14 @@ useEffect(() => {
 }, []);
 
   return (
+    <>
+    
     <div className="containe">
-      <div className="fligh">
-        <div className="airplan"></div>
+      <div className="Alain_Item">
+        
+            <img style ={{height:"250px"}}src={Flight2}></img>
       </div>
+
       <form className="form" onSubmit={handleSubmit}>
         <div className="field">
           {/* <label htmlFor="fromInput">From</label>
@@ -86,6 +90,7 @@ useEffect(() => {
             onChange={handleChange}
             required
           /> */}
+          <span>From</span>
               <select
                   name="From"
                   value={formData.From}
@@ -126,7 +131,9 @@ useEffect(() => {
                   ))}
                 </select>
         </div>
+        <span >Class</span>
         <select
+        className="field"
                   name="class"
                   value={formData.class}
                   onChange={handleChange}
@@ -156,7 +163,9 @@ useEffect(() => {
         </button>
       </form>
     </div>
+    </>
   );
+  
 }
 
 export default DisplayUserData;

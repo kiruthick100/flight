@@ -1,135 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
-.containe {
-  position: relative;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 40px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.form {
+.containe{
   display: flex;
-  flex-direction: column;
-}
-
-.field {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  font-weight: 400;
-  margin-bottom: 5px;
-}
-
-input[type="text"],
-input[type="date"] {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  transition: border-color 0.3s ease-in-out;
-}
-
-input[type="text"]:focus,
-input[type="date"]:focus {
-  border-color: #f44336;
-}
-
-.submit-button {
   position: relative;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  background-color: #f44336;
-  border: none;
-  border-radius: 5px;
-  overflow: hidden;
+  background-color: rgb(224, 217, 215);
+  height: 570px;
+
+
+}
+.containe .form .submit-button
+{
+  background-color: goldenrod;
+  color: blue;
+}
+.containe .form
+{
+  margin-top: 300px;
+  margin-left:330px;
+  display: flex;
+  position: absolute;
+}
+.containe .form .field{
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
 }
-
-.submit-button span {
-  position: relative;
-  z-index: 1;
-}
-
-.submit-button::before {
-  content: "";
+.containe .Alain_Item{
+  
+ 
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.1);
-  transition: transform 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
 
-.submit-button:hover {
-  background-color: #c62828;
-}
 
-.submit-button:hover::before {
-  transform: translateX(100%);
 }
+.containe .Alain_Item 
+{
+  display: flex;
+  justify-content: center;
+  align-content: center;
 
-.submit-button:active::before {
-  transform: translateX(0);
+
 }
+.containe .Alain_Item img{
+  margin-top: 50px;
+margin-left: 100px;
+  width: 1000px;
+  min-height: 300px;
+    border-radius: 10rem;
 
-.fligh {
-  position: relative;
-  height: 300px;
-  background-color: #f44336;
-  overflow: hidden;
-}
 
-.airplan {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100px;
-  height: 100px;
-  background-color: #fff;
-  border-radius: 50%;
-  animation: airplaneAnimation 3s ease-in-out infinite;
-}
-
-@keyframes airplaneAnimation {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-   20% {
-    transform: translate(-50%, -50%) rotate(10deg);
-  }
-  40% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  60% {
-    transform: translate(-50%, -50%) rotate(-10deg);
-  }
-  80% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
 }
